@@ -13,7 +13,6 @@ final class APIClient: APIClientInterface {
   
   private let urlSession: URLSession
   private let baseURL: String
-  private let token: String
   
   // MARK: - Public properties
   
@@ -23,8 +22,7 @@ final class APIClient: APIClientInterface {
   
   private init() {
     self.urlSession = URLSession(configuration: .default)
-    self.baseURL = "https://api.github.com"
-    self.token = "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"
+    self.baseURL = EnvironmentVariablesImpl.shared.baseURL
   }
   
   // MARK: - Private methods
@@ -33,7 +31,9 @@ final class APIClient: APIClientInterface {
   /// - Parameter request: Passing reference for parameter
   private func setHeaders(request: inout URLRequest) {
     request.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
-    request.setValue(String(format: "Bearer %@", token), forHTTPHeaderField: "Authorization")
+    if let token = EnvironmentVariablesImpl.shared.httpToken {
+      request.setValue(String(format: "Bearer %@", token), forHTTPHeaderField: "Authorization")
+    }
   }
   
   
@@ -83,7 +83,16 @@ final class APIClient: APIClientInterface {
           completion(.failure(error))
         }
         else if let data = data {
-          completion(.success(data))
+          switch (response as? HTTPURLResponse)?.statusCode {
+          case 200:
+            completion(.success(data))
+          case 304:
+            completion(.failure(APIClientError.notModified))
+          case 422:
+            completion(.failure(APIClientError.validationFailed))
+          default:
+            completion(.failure(APIClientError.unknownError))
+          }
         }
         else {
           completion(.failure(APIClientError.unknownError))

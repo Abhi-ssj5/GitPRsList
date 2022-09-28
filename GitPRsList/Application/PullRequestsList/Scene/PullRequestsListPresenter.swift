@@ -18,10 +18,6 @@ final class PullRequestsListPresenterImpl {
   private(set) weak var view: PullRequestsListView?
   var interactor: PullRequestsListInteractor!
   
-  // MARK: - Private properties
-  
-  private lazy var parameter = PullRequestUseCaseParameter(username: "Abhi-ssj5", repoName: "CalendarSync")
-  
   // MARK: - Init
   
   init(view: PullRequestsListView?) {
@@ -37,12 +33,12 @@ extension PullRequestsListPresenterImpl: PullRequestsListPresenter {
     view?.setup(title: Defaults.pageTitle)
     
     view?.showLoader()
-    interactor.getListOfPullRequests(parameter: parameter)
+    interactor.getListOfPullRequests(parameter: interactor.getParameters())
   }
   
   func retryButtonTapped() {
     view?.showLoader()
-    interactor.getListOfPullRequests(parameter: parameter)
+    interactor.getListOfPullRequests(parameter: interactor.getParameters())
   }
   
 }

@@ -28,6 +28,7 @@ protocol PullRequestsListPresenter: AnyObject {
 protocol PullRequestsListInteractor: AnyObject {
   var output: PullRequestsListInteractorOutput? { get }
   
+  func getParameters() -> PullRequestUseCaseParameter
   func getListOfPullRequests(parameter: PullRequestUseCaseParameter)
 }
 

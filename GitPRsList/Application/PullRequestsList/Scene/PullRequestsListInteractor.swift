@@ -13,13 +13,16 @@ final class PullRequestsListInteractorImpl {
   
   private(set) weak var output: PullRequestsListInteractorOutput?
   private let useCase: PullRequestUseCase
+  private let environmentVariables: EnvironmentVariables
   
   // MARK: - Init
   
   init(output: PullRequestsListInteractorOutput?,
-       useCase: PullRequestUseCase) {
+       useCase: PullRequestUseCase,
+       environmentVariables: EnvironmentVariables) {
     self.output = output
     self.useCase = useCase
+    self.environmentVariables = environmentVariables
   }
   
 }
@@ -42,6 +45,11 @@ extension PullRequestsListInteractorImpl: PullRequestsListInteractor {
         self.output?.handleGetListOfPullRequestFailure(error: error)
       }
     }
+  }
+  
+  func getParameters() -> PullRequestUseCaseParameter {
+    return PullRequestUseCaseParameter(username: environmentVariables.gitUsername,
+                                       repoName: environmentVariables.gitRepoName)
   }
   
 }

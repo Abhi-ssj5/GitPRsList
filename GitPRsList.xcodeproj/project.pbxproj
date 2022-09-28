@@ -23,6 +23,7 @@
 		4714E59328E4D45800184591 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E59228E4D45800184591 /* ImageDownloader.swift */; };
 		4714E59928E4D56D00184591 /* ImageDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E59828E4D56D00184591 /* ImageDownloadOperation.swift */; };
 		4714E59D28E4E1FD00184591 /* PullRequestCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E59C28E4E1FD00184591 /* PullRequestCellViewModel.swift */; };
+		4714E5A028E4E3C900184591 /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E59F28E4E3C900184591 /* EnvironmentVariables.swift */; };
 		472D988F28E3678A00B27C0B /* PullRequestsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472D988E28E3678A00B27C0B /* PullRequestsListViewController.swift */; };
 		472D989128E36A9500B27C0B /* PullRequestUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472D989028E36A9500B27C0B /* PullRequestUseCase.swift */; };
 		47A9624B28E1F6D0004934FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A9624A28E1F6D0004934FF /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		4714E59228E4D45800184591 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		4714E59828E4D56D00184591 /* ImageDownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadOperation.swift; sourceTree = "<group>"; };
 		4714E59C28E4E1FD00184591 /* PullRequestCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestCellViewModel.swift; sourceTree = "<group>"; };
+		4714E59F28E4E3C900184591 /* EnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
 		472D988E28E3678A00B27C0B /* PullRequestsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsListViewController.swift; sourceTree = "<group>"; };
 		472D989028E36A9500B27C0B /* PullRequestUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestUseCase.swift; sourceTree = "<group>"; };
 		47A9624728E1F6D0004934FF /* GitPRsList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitPRsList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +118,7 @@
 		4714E59428E4D53F00184591 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4714E59E28E4E3BA00184591 /* EnvironmentVariables */,
 				4714E59728E4D55E00184591 /* ImageDownloader */,
 			);
 			path = Common;
@@ -146,6 +149,14 @@
 				4714E59C28E4E1FD00184591 /* PullRequestCellViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4714E59E28E4E3BA00184591 /* EnvironmentVariables */ = {
+			isa = PBXGroup;
+			children = (
+				4714E59F28E4E3C900184591 /* EnvironmentVariables.swift */,
+			);
+			path = EnvironmentVariables;
 			sourceTree = "<group>";
 		};
 		472D988A28E364E700B27C0B /* PullRequestsList */ = {
@@ -333,6 +344,7 @@
 				4714E57428E3796900184591 /* APIClientError.swift in Sources */,
 				4714E57A28E4AE3A00184591 /* PullRequestsListInteractor.swift in Sources */,
 				4714E57228E370A800184591 /* APIClient.swift in Sources */,
+				4714E5A028E4E3C900184591 /* EnvironmentVariables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,9 +489,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "https://api.github.com";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				GIT_REPO_NAME = CalendarSync;
+				GIT_USERNAME = "Abhi-ssj5";
+				HTTP_TOKEN = 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;
 				INFOPLIST_FILE = GitPRsList/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -507,9 +523,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "https://api.github.com";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				GIT_REPO_NAME = CalendarSync;
+				GIT_USERNAME = "Abhi-ssj5";
+				HTTP_TOKEN = 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;
 				INFOPLIST_FILE = GitPRsList/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

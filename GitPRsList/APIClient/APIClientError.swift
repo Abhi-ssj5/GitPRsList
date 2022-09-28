@@ -10,4 +10,6 @@ import Foundation
 enum APIClientError: Error {
   case invalidURL
   case unknownError
+  case notModified
+  case validationFailed
 }

@@ -14,8 +14,10 @@ struct PullRequestsListConfigurator: PullRequestsListConfiguratorInterface {
     
     let apiClient: APIClientInterface = APIClient.shared
     let useCase: PullRequestUseCase = PullRequestUseCaseImpl(apiClient: apiClient)
+    let environmentVariables = EnvironmentVariablesImpl.shared
     let interactor: PullRequestsListInteractor = PullRequestsListInteractorImpl(output: presenter,
-                                                                                useCase: useCase)
+                                                                                useCase: useCase,
+                                                                                environmentVariables: environmentVariables)
     
     view.presenter = presenter
     presenter.interactor = interactor
