@@ -25,7 +25,6 @@ final class PullRequestsListTableViewAdapter: NSObject {
   private let tableView: UITableView
   private var pullRequestArray: [PullRequestData]
   private var dataSource: DataSource!
-  private var estimatedHeight: [IndexPath: CGFloat] = [:]
   
   // MARK: - Init
   
@@ -51,8 +50,6 @@ final class PullRequestsListTableViewAdapter: NSObject {
     registerCells()
     
     tableView.estimatedRowHeight = Defaults.estimatedRowHeight
-    tableView.delegate = self
-    
     configureDataSource()
   }
   
@@ -84,20 +81,6 @@ final class PullRequestsListTableViewAdapter: NSObject {
     guard let cell = cell else {
       return
     }
-    cell.configure(data: data)
+    cell.configure(data: PullRequestCellViewModel(model: data))
   }
-}
-
-// MARK: - UITableViewDelegate methods
-
-extension PullRequestsListTableViewAdapter: UITableViewDelegate {
-  
-  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    estimatedHeight[indexPath] = cell.contentView.frame.height
-  }
-  
-  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return estimatedHeight[indexPath] ?? Defaults.estimatedRowHeight
-  }
-  
 }

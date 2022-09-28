@@ -24,7 +24,7 @@ final class APIClient: APIClientInterface {
   private init() {
     self.urlSession = URLSession(configuration: .default)
     self.baseURL = "https://api.github.com"
-    self.token = "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"
+    self.token = "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"
   }
   
   // MARK: - Private methods

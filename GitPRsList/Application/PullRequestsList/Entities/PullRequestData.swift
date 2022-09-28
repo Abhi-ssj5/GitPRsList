@@ -48,7 +48,7 @@ enum PullRequestState: String, Decodable {
 
 struct User: Decodable {
   let username: String
-  let imageURL: String
+  let imageURL: URL
   
   private enum CodingKeys: String, CodingKey {
     case username = "login"

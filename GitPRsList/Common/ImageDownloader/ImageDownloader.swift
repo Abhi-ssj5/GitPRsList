@@ -36,6 +36,11 @@ final class ImageDownloader {
       return completion(.failure(ImageDownloadError.invalidURL))
     }
     
+    if let image = cache[url] {
+      completion(.success(image))
+      return
+    }
+    
     guard downloadInProgress[url] == nil else {
       return
     }
@@ -54,6 +59,7 @@ final class ImageDownloader {
       
       switch result {
       case .success(let image):
+        self.cache[url] = image
         completion(.success(image))
       case .failure(let error):
         completion(.failure(error))

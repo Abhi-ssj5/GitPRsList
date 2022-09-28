@@ -17,6 +17,12 @@ struct PullRequestUseCaseImpl: PullRequestUseCase {
   
   // MARK: - Private property
   
+  private struct Filters {
+    static let state: String = "state"
+    static let page: String = "page"
+    static let pageNumber: String = "page_number"
+  }
+  
   private let apiClient: APIClientInterface
   
   // MARK: - Init
@@ -33,13 +39,13 @@ struct PullRequestUseCaseImpl: PullRequestUseCase {
     let filters: [(String, String)] = filter.map({ (element) in
       switch element {
       case .state(let state):
-        return ("state", state.rawValue)
+        return (Filters.state, state.rawValue)
         
       case .page(let pageNumber):
-        return ("page", String(format: "%d", pageNumber))
+        return (Filters.page, String(format: "%d", pageNumber))
         
       case .perPage(let perPageCount):
-        return ("per_page", String(format: "%d", perPageCount))
+        return (Filters.pageNumber, String(format: "%d", perPageCount))
       }
     })
     

@@ -38,6 +38,10 @@ final class PullRequestsListViewController: UIViewController {
 
 extension PullRequestsListViewController: PullRequestsListView {
   
+  func setup(title: String) {
+    self.title = title
+  }
+  
   func showPullRequests(_ array: [PullRequestData]) {
     if let adapter = adapter {
       adapter.refresh(pullRequestArray: array)

@@ -22,6 +22,7 @@
 		4714E59128E4CD0200184591 /* APIClientInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E59028E4CD0200184591 /* APIClientInterface.swift */; };
 		4714E59328E4D45800184591 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E59228E4D45800184591 /* ImageDownloader.swift */; };
 		4714E59928E4D56D00184591 /* ImageDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E59828E4D56D00184591 /* ImageDownloadOperation.swift */; };
+		4714E59D28E4E1FD00184591 /* PullRequestCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E59C28E4E1FD00184591 /* PullRequestCellViewModel.swift */; };
 		472D988F28E3678A00B27C0B /* PullRequestsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472D988E28E3678A00B27C0B /* PullRequestsListViewController.swift */; };
 		472D989128E36A9500B27C0B /* PullRequestUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472D989028E36A9500B27C0B /* PullRequestUseCase.swift */; };
 		47A9624B28E1F6D0004934FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A9624A28E1F6D0004934FF /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 		4714E59028E4CD0200184591 /* APIClientInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientInterface.swift; sourceTree = "<group>"; };
 		4714E59228E4D45800184591 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		4714E59828E4D56D00184591 /* ImageDownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadOperation.swift; sourceTree = "<group>"; };
+		4714E59C28E4E1FD00184591 /* PullRequestCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestCellViewModel.swift; sourceTree = "<group>"; };
 		472D988E28E3678A00B27C0B /* PullRequestsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsListViewController.swift; sourceTree = "<group>"; };
 		472D989028E36A9500B27C0B /* PullRequestUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestUseCase.swift; sourceTree = "<group>"; };
 		47A9624728E1F6D0004934FF /* GitPRsList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitPRsList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +130,24 @@
 			path = ImageDownloader;
 			sourceTree = "<group>";
 		};
+		4714E59A28E4E1DC00184591 /* PullRequestListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4714E59B28E4E1E800184591 /* ViewModel */,
+				4714E58928E4BD0E00184591 /* PullRequestListTableViewCell.swift */,
+				4714E58A28E4BD0E00184591 /* PullRequestListTableViewCell.xib */,
+			);
+			path = PullRequestListTableViewCell;
+			sourceTree = "<group>";
+		};
+		4714E59B28E4E1E800184591 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4714E59C28E4E1FD00184591 /* PullRequestCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		472D988A28E364E700B27C0B /* PullRequestsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,8 +165,7 @@
 		472D988B28E3659600B27C0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4714E58928E4BD0E00184591 /* PullRequestListTableViewCell.swift */,
-				4714E58A28E4BD0E00184591 /* PullRequestListTableViewCell.xib */,
+				4714E59A28E4E1DC00184591 /* PullRequestListTableViewCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -306,6 +325,7 @@
 				4714E57628E3797B00184591 /* HTTPMethod.swift in Sources */,
 				4714E58028E4AE7900184591 /* PullRequestsListConfigurator.swift in Sources */,
 				4714E58B28E4BD0E00184591 /* PullRequestListTableViewCell.swift in Sources */,
+				4714E59D28E4E1FD00184591 /* PullRequestCellViewModel.swift in Sources */,
 				4714E58828E4B42200184591 /* PullRequestsListTableViewAdapter.swift in Sources */,
 				4714E59128E4CD0200184591 /* APIClientInterface.swift in Sources */,
 				4714E59928E4D56D00184591 /* ImageDownloadOperation.swift in Sources */,

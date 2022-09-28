@@ -11,6 +11,10 @@ final class PullRequestsListPresenterImpl {
   
   // MARK: - Public properties
   
+  private struct Defaults {
+    static let pageTitle: String = "Closed Pull Request List"
+  }
+  
   private(set) weak var view: PullRequestsListView?
   var interactor: PullRequestsListInteractor!
   
@@ -30,6 +34,8 @@ final class PullRequestsListPresenterImpl {
 extension PullRequestsListPresenterImpl: PullRequestsListPresenter {
   
   func onViewDidLoad() {
+    view?.setup(title: Defaults.pageTitle)
+    
     view?.showLoader()
     interactor.getListOfPullRequests(parameter: parameter)
   }

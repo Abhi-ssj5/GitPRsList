@@ -10,6 +10,7 @@ import UIKit
 protocol PullRequestsListView where Self: UIViewController {
   var presenter: PullRequestsListPresenter! { get set }
   
+  func setup(title: String)
   func showPullRequests(_ array: [PullRequestData])
   func showLoader()
   func hideLoader()

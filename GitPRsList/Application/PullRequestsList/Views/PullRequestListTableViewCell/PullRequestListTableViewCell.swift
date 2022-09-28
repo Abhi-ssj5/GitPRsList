@@ -20,6 +20,7 @@ final class PullRequestListTableViewCell: UITableViewCell {
     didSet {
       userImageView.clipsToBounds = true
       userImageView.layer.cornerRadius = 4.0
+      userImageView.backgroundColor = UIColor.lightGray
     }
   }
   
@@ -37,27 +38,27 @@ final class PullRequestListTableViewCell: UITableViewCell {
     }
   }
   
+  // MARK: - LifeCycle method
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     
     selectionStyle = .none
   }
   
-  func configure(data: PullRequestData) {
+  // MARK: - Public methods
+  
+  func configure(data: PullRequestCellViewModel) {
     titleLabel.text = data.title
-    subtitleLabel.text = getSubTitleText(data: data)
+    subtitleLabel.text = data.subTitle
     
-    
-  }
-  
-  // MARK: - Privat methods
-  
-  private func getSubTitleText(data: PullRequestData) -> String {
-    var subTitles: [String]
-    
-    
-    
-    return subTitles.joined(separator: "\n")
+    ImageDownloader.shared.downloadImage(data.userImageURL, completion: { [weak self] (result) in
+      if let image = try? result.get() {
+        DispatchQueue.main.async { [weak self] in
+          self?.userImageView.image = image
+        }
+      }
+    })
   }
   
 }
