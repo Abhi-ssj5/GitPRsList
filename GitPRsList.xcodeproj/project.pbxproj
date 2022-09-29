@@ -25,6 +25,8 @@
 		4714E59D28E4E1FD00184591 /* PullRequestCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E59C28E4E1FD00184591 /* PullRequestCellViewModel.swift */; };
 		4714E5A028E4E3C900184591 /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E59F28E4E3C900184591 /* EnvironmentVariables.swift */; };
 		4714E5A828E6045700184591 /* GitPRsListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E5A728E6045700184591 /* GitPRsListTests.swift */; };
+		4714E5B028E606A300184591 /* PullRequestListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4714E5AF28E606A300184591 /* PullRequestListPresenterTest.swift */; };
+		4714E5B328E6140700184591 /* Pulls.json in Resources */ = {isa = PBXBuildFile; fileRef = 4714E5B228E6102400184591 /* Pulls.json */; };
 		472D988F28E3678A00B27C0B /* PullRequestsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472D988E28E3678A00B27C0B /* PullRequestsListViewController.swift */; };
 		472D989128E36A9500B27C0B /* PullRequestUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472D989028E36A9500B27C0B /* PullRequestUseCase.swift */; };
 		47A9624B28E1F6D0004934FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A9624A28E1F6D0004934FF /* AppDelegate.swift */; };
@@ -63,6 +65,8 @@
 		4714E59F28E4E3C900184591 /* EnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
 		4714E5A528E6045700184591 /* GitPRsListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitPRsListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4714E5A728E6045700184591 /* GitPRsListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitPRsListTests.swift; sourceTree = "<group>"; };
+		4714E5AF28E606A300184591 /* PullRequestListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestListPresenterTest.swift; sourceTree = "<group>"; };
+		4714E5B228E6102400184591 /* Pulls.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Pulls.json; sourceTree = "<group>"; };
 		472D988E28E3678A00B27C0B /* PullRequestsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestsListViewController.swift; sourceTree = "<group>"; };
 		472D989028E36A9500B27C0B /* PullRequestUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestUseCase.swift; sourceTree = "<group>"; };
 		47A9624728E1F6D0004934FF /* GitPRsList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitPRsList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,9 +186,27 @@
 		4714E5A628E6045700184591 /* GitPRsListTests */ = {
 			isa = PBXGroup;
 			children = (
+				4714E5AE28E6067E00184591 /* PullRequestListTest */,
 				4714E5A728E6045700184591 /* GitPRsListTests.swift */,
 			);
 			path = GitPRsListTests;
+			sourceTree = "<group>";
+		};
+		4714E5AE28E6067E00184591 /* PullRequestListTest */ = {
+			isa = PBXGroup;
+			children = (
+				4714E5B128E60FF500184591 /* Stub */,
+				4714E5AF28E606A300184591 /* PullRequestListPresenterTest.swift */,
+			);
+			path = PullRequestListTest;
+			sourceTree = "<group>";
+		};
+		4714E5B128E60FF500184591 /* Stub */ = {
+			isa = PBXGroup;
+			children = (
+				4714E5B228E6102400184591 /* Pulls.json */,
+			);
+			path = Stub;
 			sourceTree = "<group>";
 		};
 		472D988A28E364E700B27C0B /* PullRequestsList */ = {
@@ -365,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4714E5B328E6140700184591 /* Pulls.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4714E5A828E6045700184591 /* GitPRsListTests.swift in Sources */,
+				4714E5B028E606A300184591 /* PullRequestListPresenterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
