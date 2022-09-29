@@ -9,7 +9,6 @@ import Foundation
 
 protocol EnvironmentVariables {
   var baseURL: String { get }
-  var httpToken: String? { get }
   var gitUsername: String { get }
   var gitRepoName: String { get }
 }
@@ -38,13 +37,6 @@ struct EnvironmentVariablesImpl: EnvironmentVariables {
       return baseURL
     }
     return ""
-  }
-  
-  var httpToken: String? {
-    if let httpToken = dictionary["HTTP_TOKEN"] as? String {
-      return httpToken
-    }
-    return nil
   }
   
   var gitUsername: String {
