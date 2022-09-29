@@ -14,17 +14,28 @@ fileprivate enum SectionType {
   case pullRequest
 }
 
+protocol PullRequestsListTableViewAdapterDelegate: AnyObject {
+  func refreshData()
+  func loadMoreData()
+}
+
 final class PullRequestsListTableViewAdapter: NSObject {
   
   // MARK: - Private properties
   
   private struct Defaults {
     static let estimatedRowHeight: CGFloat = 64.0
+    static let paginationOffset: CGFloat = 50.0
   }
   
   private let tableView: UITableView
   private var pullRequestArray: [PullRequestData]
   private var dataSource: DataSource!
+  private var isPaginating: Bool = false
+  
+  // MARK: - Public properties
+  
+  public var delegate: PullRequestsListTableViewAdapterDelegate?
   
   // MARK: - Init
   
@@ -44,13 +55,29 @@ final class PullRequestsListTableViewAdapter: NSObject {
     dataSource.apply(getSnapShot())
   }
   
+  public func loadMore(pullRequestArray: [PullRequestData]) {
+    if !pullRequestArray.isEmpty {
+      self.pullRequestArray.append(contentsOf: pullRequestArray)
+      
+      var snapShot = dataSource.snapshot()
+      snapShot.appendItems(pullRequestArray)
+      dataSource.defaultRowAnimation = .bottom
+      dataSource.apply(snapShot)
+    }
+    
+    self.tableView.tableFooterView = nil
+    self.isPaginating = false
+  }
+  
   // MARK: - Private methods
   
   private func setupTableView() {
     registerCells()
+    addPullToRefresh()
     
     tableView.estimatedRowHeight = Defaults.estimatedRowHeight
     configureDataSource()
+    tableView.delegate = self
   }
   
   private func registerCells() {
@@ -83,4 +110,43 @@ final class PullRequestsListTableViewAdapter: NSObject {
     }
     cell.configure(data: PullRequestCellViewModel(model: data))
   }
+  
+  private func paginatingFooterView() -> UIView {
+    let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
+    let spinner = UIActivityIndicatorView()
+    spinner.center = footerView.center
+    footerView.addSubview(spinner)
+    spinner.startAnimating()
+    return footerView
+  }
+  
+  private func addPullToRefresh() {
+    let refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+    tableView.refreshControl = refreshControl
+  }
+  
+  @objc private func refreshTableView(_ refreshControl: UIRefreshControl) {
+    delegate?.refreshData()
+    refreshControl.endRefreshing()
+  }
+}
+
+// MARK: - UITableViewDelegate methods
+
+extension PullRequestsListTableViewAdapter: UITableViewDelegate {
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    guard !isPaginating else {
+      return
+    }
+    
+    let pos = scrollView.contentOffset.y
+    if pos > tableView.contentSize.height - Defaults.paginationOffset - scrollView.frame.size.height {
+      self.tableView.tableFooterView = paginatingFooterView()
+      self.isPaginating = true
+      delegate?.loadMoreData()
+    }
+  }
+  
 }

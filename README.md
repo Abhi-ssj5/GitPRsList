@@ -15,11 +15,8 @@ Using Git Public APIs to get pull request list for public repositories.
 ```sh
 GIT_USERNAME
 ```
-#### 1.2. Git Http Token
-```sh
-HTTP_TOKEN
-```
-#### 1.3. Git Repository name
+
+#### 1.2. Git Repository name
 ```sh
 GIT_REPO_NAME
 ```

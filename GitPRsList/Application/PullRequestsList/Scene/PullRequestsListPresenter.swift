@@ -33,11 +33,24 @@ extension PullRequestsListPresenterImpl: PullRequestsListPresenter {
     view?.setup(title: Defaults.pageTitle)
     
     view?.showLoader()
+    view?.showLoadingBlockerView()
     interactor.getListOfPullRequests(parameter: interactor.getParameters())
   }
   
   func retryButtonTapped() {
     view?.showLoader()
+    view?.showLoadingBlockerView()
+    interactor.getListOfPullRequests(parameter: interactor.getParameters())
+  }
+  
+  func refreshData() {
+    view?.showLoader()
+    view?.showLoadingBlockerView()
+    interactor.resetPage()
+    interactor.getListOfPullRequests(parameter: interactor.getParameters())
+  }
+  
+  func loadMorePullRequests() {
     interactor.getListOfPullRequests(parameter: interactor.getParameters())
   }
   
@@ -49,12 +62,22 @@ extension PullRequestsListPresenterImpl: PullRequestsListInteractorOutput {
   
   func handleGetListOfPullRequestSuccess(response: [PullRequestData]) {
     view?.hideLoader()
+    view?.hideLoadingBlockerView()
     view?.showPullRequests(response)
   }
   
   func handleGetListOfPullRequestFailure(error: Error) {
     view?.hideLoader()
+    view?.hideLoadingBlockerView()
     view?.showErrorToast(withMessage: error.localizedDescription)
+  }
+  
+  func handleLoadMorePullRequestSuccess(response: [PullRequestData]) {
+    view?.loadMorePullRequets(response)
+  }
+  
+  func handleLoadMorePullRequestFailure(error: Error) {
+    view?.loadMorePullRequets([])
   }
   
 }

@@ -20,7 +20,7 @@ struct PullRequestUseCaseImpl: PullRequestUseCase {
   private struct Filters {
     static let state: String = "state"
     static let page: String = "page"
-    static let pageNumber: String = "page_number"
+    static let perPage: String = "per_page"
   }
   
   private let apiClient: APIClientInterface
@@ -45,7 +45,7 @@ struct PullRequestUseCaseImpl: PullRequestUseCase {
         return (Filters.page, String(format: "%d", pageNumber))
         
       case .perPage(let perPageCount):
-        return (Filters.pageNumber, String(format: "%d", perPageCount))
+        return (Filters.perPage, String(format: "%d", perPageCount))
       }
     })
     

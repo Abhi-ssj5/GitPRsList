@@ -6,8 +6,6 @@
 	<string>${GIT_REPO_NAME}</string>
 	<key>GIT_USERNAME</key>
 	<string>$(GIT_USERNAME)</string>
-	<key>HTTP_TOKEN</key>
-	<string>${HTTP_TOKEN}</string>
 	<key>BASE_URL</key>
 	<string>${BASE_URL}</string>
 </dict>

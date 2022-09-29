@@ -15,6 +15,8 @@ final class PullRequestsListViewController: UIViewController {
   
   @IBOutlet private weak var tableView: UITableView!
   
+  @IBOutlet private weak var loadingBlockerView: UIView!
+  
   // MARK: - Private properties
   
   private var adapter: PullRequestsListTableViewAdapter?
@@ -48,7 +50,12 @@ extension PullRequestsListViewController: PullRequestsListView {
     }
     else {
       self.adapter = PullRequestsListTableViewAdapter(tableView: tableView, pullRequestArray: array)
+      self.adapter?.delegate = self
     }
+  }
+  
+  func loadMorePullRequets(_ array: [PullRequestData]) {
+    self.adapter?.loadMore(pullRequestArray: array)
   }
   
   func showLoader() {
@@ -71,6 +78,28 @@ extension PullRequestsListViewController: PullRequestsListView {
     alertViewController.addAction(retryButton)
     alertViewController.addAction(okButton)
     self.present(alertViewController, animated: true)
+  }
+  
+  func showLoadingBlockerView() {
+    loadingBlockerView.isHidden = false
+  }
+  
+  func hideLoadingBlockerView() {
+    loadingBlockerView.isHidden = true
+  }
+  
+}
+
+// MARK: - PullRequestsListTableViewAdapterDelegate methods
+
+extension PullRequestsListViewController: PullRequestsListTableViewAdapterDelegate {
+  
+  func refreshData() {
+    presenter.refreshData()
+  }
+  
+  func loadMoreData() {
+    presenter.loadMorePullRequests()
   }
   
 }

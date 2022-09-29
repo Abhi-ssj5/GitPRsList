@@ -493,9 +493,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				GIT_REPO_NAME = CalendarSync;
-				GIT_USERNAME = "Abhi-ssj5";
-				HTTP_TOKEN = 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;
+				GIT_REPO_NAME = swift;
+				GIT_USERNAME = apple;
 				INFOPLIST_FILE = GitPRsList/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -527,9 +526,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				GIT_REPO_NAME = CalendarSync;
-				GIT_USERNAME = "Abhi-ssj5";
-				HTTP_TOKEN = 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;
+				GIT_REPO_NAME = swift;
+				GIT_USERNAME = apple;
 				INFOPLIST_FILE = GitPRsList/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

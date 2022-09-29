@@ -31,9 +31,7 @@ final class APIClient: APIClientInterface {
   /// - Parameter request: Passing reference for parameter
   private func setHeaders(request: inout URLRequest) {
     request.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
-    if let token = EnvironmentVariablesImpl.shared.httpToken {
-      request.setValue(String(format: "Bearer %@", token), forHTTPHeaderField: "Authorization")
-    }
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
   }
   
   
