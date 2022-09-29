@@ -51,8 +51,14 @@ final class PullRequestsListTableViewAdapter: NSObject {
   // MARK: - Public methods
   
   public func refresh(pullRequestArray: [PullRequestData]) {
+    let newItems = Set(pullRequestArray).subtracting(Set(self.pullRequestArray))
+    let removeItems = Set(self.pullRequestArray).subtracting(Set(pullRequestArray))
     self.pullRequestArray = pullRequestArray
-    dataSource.apply(getSnapShot())
+    
+    var snapShot = dataSource.snapshot()
+    snapShot.deleteItems(Array(removeItems))
+    snapShot.appendItems(Array(newItems))
+    dataSource.apply(snapShot)
   }
   
   public func loadMore(pullRequestArray: [PullRequestData]) {
